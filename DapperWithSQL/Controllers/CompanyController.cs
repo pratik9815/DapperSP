@@ -3,6 +3,7 @@ using DapperWithSQL.DataContext;
 using DapperWithSQL.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
 using System.ComponentModel.Design;
 using System.Data;
@@ -32,23 +33,23 @@ namespace DapperWithSQL.Controllers
         }
 
         [HttpPost("add-company")]
-        public ActionResult<string> AddEmployee([FromBody]Company company)
+        public async Task<ActionResult<Api_Response>> AddEmployee([FromBody]Company company)
         {
             string query = "AddCompany";
-            int result;
+            
             using (var connection = _dapperContext.DbConnection())
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@Name", company.Name);
                 parameters.Add("@Address", company.Address);
                 parameters.Add("@Country", company.Country);
-                result = connection.Execute(query, parameters);
-            }
-            return Ok($"{result} row affected");
+                var result = await connection.QuerySingleAsync<Api_Response>(query, parameters);
+                return Ok(result);
+            }   
         }
 
         [HttpGet("get-company-details/{id}")]
-        public Company GetCompanyDetail([FromRoute]int id)
+        public ActionResult<Company> GetCompanyDetail([FromRoute]int id)
         {
             string query1 = "GetCompanyById";
             string query2 = "GetEmployeeByCompany";
@@ -58,10 +59,6 @@ namespace DapperWithSQL.Controllers
             {
                 DynamicParameters para = new DynamicParameters();
                 para.Add("@CompanyId", id);
-                var lookup = new Dictionary<int, Company>();
-
-                //var result = connection.QuerySingleOrDefault<Company>(query, para);
-
                 var company = connection.QueryFirstOrDefault<Company>(query1, new {CompanyId = id });
 
                 if (company != null)
@@ -69,9 +66,44 @@ namespace DapperWithSQL.Controllers
                     var employees = connection.Query<Employee>(query2, para).ToList();
                     company.Employees.AddRange(employees);
                 }
-                return company;
+                return Ok(company);
             }
            
+        }
+
+
+        [HttpPut("update-company-details")]
+        public ActionResult<Api_Response> UpdateCompanyDetails(Company company)
+        {
+            Api_Response res = new Api_Response();
+
+            string sp = "UpdateCompany";
+
+            using(var connection = _dapperContext.DbConnection())
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Id", company.Id);
+                parameters.Add("@Name", company.Name);
+                parameters.Add("@Address", company.Address);
+                parameters.Add("@Country", company.Country);
+
+                var result = connection.QuerySingle<Api_Response>(sp, parameters, commandType: CommandType.StoredProcedure);
+                return Ok(result);
+            }
+
+        }
+
+        [HttpDelete("remove-company")]
+        public async Task<ActionResult<Api_Response>> RemoveCompany(int companyId)
+        {
+            string sql = "RemoveCompany";
+            using(var connection = _dapperContext.DbConnection())
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@CompanyId",companyId);
+                var result = await connection.QuerySingleAsync<Api_Response>(sql,parameters,commandType:CommandType.StoredProcedure);
+                return Ok(result);
+            }
         }
     }
 }

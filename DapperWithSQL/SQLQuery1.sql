@@ -102,13 +102,20 @@ begin
 end
 
 
+create procedure GetEmployeeById
+@EmployeeId int
+as
+begin
+	set nocount on;
+	select *from Company where id = @EmployeeId;
+	set nocount off;
+end
 
 
-
-exec GetCompany
+--exec GetCompany
 
 --procedure for add company
-create procedure AddCompany 
+alter procedure AddCompany 
 	@Name varchar(255),
 	@Address varchar(255),
 	@Country varchar(255)
@@ -117,11 +124,26 @@ begin
 	set nocount on;
 	insert into Company(Name,Address,Country)
 	values(@Name,@Address,@Country)
+
+	if @@ROWCOUNT = 0
+	begin
+			SELECT 'FAILURE' AS STATUS
+             , '1' AS STATUS_CODE
+             , 'Data insertion failure' AS MSG
+	end
+	else
+	begin 
+			SELECT 'SUCCESS' AS STATUS
+             , '0' AS STATUS_CODE
+             , 'Data inserted successfully' AS MSG	
+	end
+
 end
 
 
-exec AddCompany @Name = 'Inficare private limited', @Address = 'Naxal', @Country = 'Nepal'
+exec AddCompany @Name = 'IMark private limited', @Address = 'Kathmandu', @Country = 'Nepal'
 
+exec GetCompany
 
 
 ALTER PROCEDURE GetCompanyDetail
@@ -152,4 +174,114 @@ END
 
 
 EXEC GetCompanyDetail @CompanyId = 1;
+
+
+
+
+create procedure UpdateEmployee
+@Id int,
+@Name varchar(255),
+@Age varchar(255),
+@CompanyId varchar(255),
+@Position varchar(255)
+AS
+BEGIN
+	set nocount on;
+	BEGIN TRY
+	update Employee set Name = @Name, Age = @Age, Position= @Position, CompanyId = @CompanyId
+	where Id = @Id
+
+	IF @@ROWCOUNT = 0
+	BEGIN
+		SELECT 'FAILURE' AS STATUS
+		, '1' AS STATUS_CODE
+		, 'DATA INSERTION FAILED' AS MSG
+	END
+	ELSE
+	BEGIN
+		SELECT 'SUCCESS' AS STATUS
+             , '0' AS STATUS_CODE
+             , 'Data inserted successfully' AS MSG
+	END
+	END TRY
+	BEGIN CATCH
+		SELECT 'FAILURE' AS STATUS, ERROR_NUMBER() AS STATUS_CODE, ERROR_MESSAGE() AS MSG;
+	END CATCH
+	set nocount off;
+END
+
+exec UpdateCompany @id = 6 ,@Name = 'Inficare', @Address = 'Naxal, Kathmandu, Nepal' , @Country = 'Nepal'
+
+
+exec GetCompany
+
+
+alter PROCEDURE [dbo].[RemoveCompany]
+	@CompanyId int
+as 
+begin
+	set nocount on;
+	delete from Company where Id = @CompanyId
+	
+	IF @@ROWCOUNT = 0
+	BEGIN
+		SELECT 'FAILURE' AS STATUS
+		, '1' AS STATUS_CODE
+		, 'DATA INSERTION FAILED' AS MSG
+	END
+	ELSE
+	BEGIN
+		SELECT 'SUCCESS' AS STATUS
+             , '0' AS STATUS_CODE
+             , 'Data inserted successfully' AS MSG
+	END
+	set nocount off;
+end
+
+
+CREATE PROCEDURE [dbo].[RemoveEmployee]
+	@EmployeeId int
+as 
+begin
+	set nocount on;
+	delete from Employee where Id = @EmployeeId
+	
+	IF @@ROWCOUNT = 0
+	BEGIN
+		SELECT 'FAILURE' AS STATUS
+		, '1' AS STATUS_CODE
+		, 'DATA INSERTION FAILED' AS MSG
+	END
+	ELSE
+	BEGIN
+		SELECT 'SUCCESS' AS STATUS
+             , '0' AS STATUS_CODE
+             , 'Data inserted successfully' AS MSG
+	END
+	set nocount off;
+END
+
+
+
+--table valued function -- return whole table(set of rows)
+create function [dbo].[GetEmployeesByCompanyId](@CompanyId int)
+returns table 
+as 
+return (
+	select *from Employee where CompanyId = @CompanyId
+	);
+
+	--function call
+	select *from dbo.GetEmployeesByCompanyId(1)
+
+
+--scaler valued function --returns only a single value
+
+
+
+
+
+
+
+
 
