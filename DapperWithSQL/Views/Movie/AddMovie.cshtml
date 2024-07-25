@@ -1,0 +1,29 @@
+﻿
+@model DapperWithSQL.Models.Movies
+@{
+    ViewData["Title"] = "Add Movie";
+}
+<h2>Add Movie</h2>
+<form method="post" asp-asp-controller="Movie">
+    <div class="border p-3 mt-4">
+        <div class="form-group">
+            <label asp-for="@Model.Movie_Name">Movie Name:</label><br>
+            <input asp-for="@Model.Movie_Name" id="Movie_Name" class="form-control" type="text" name="Movie_Name" placeholder="Movie Name" />
+            <span asp-validation-for="@Model.Movie_Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Movie_Name_Confirmation">Movie Name:</label><br>
+            <input asp-for="@Model.Movie_Name_Confirmation" id="Movie_Name_Confirmation" class="form-control" type="text" name="Movie_Name_Confirmation" placeholder="Movie Name Confirmation" />
+            <span asp-validation-for="@Model.Movie_Name_Confirmation" class="text-danger"></span>
+        </div>
+        <div class="mt-2">
+            <label asp-for="@Model.Movie_Price" name="Movie_Price">Movie Price:</label><br />
+            <input asp-for="@Model.Movie_Price" class="form-control" id="moviePrice" type="number" step="0.01" name="Movie_Price" placeholder="$Price" />
+            <span asp-validation-for="@Model.Movie_Price" class="text-danger"></span>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+    </div>
+
+</form>

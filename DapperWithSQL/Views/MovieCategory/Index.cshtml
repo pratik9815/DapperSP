@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MovieCategory>;
+@{
+    ViewData["Title"] = "Category";
+    int i = 1;
+}
+<div class="row">
+    <h3 class="col-sm-8">Movie Category</h3>
+    <button class="col-sm-2 btn btn-primary m-0 p-0" style="font-weight:bold">
+        <a class="nav-link text-white" asp-controller="MovieCategory" asp-action="AddMovieCategory">Add Category</a>
+    </button>
+</div>
+
+<table class="table">
+    <tr>
+        <td>S.N</td>
+        <td class="col-sm-6">Genre</td>
+        <td class="col-sm-6">Description</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(i++)</td>
+            <td>@item.Genre</td>
+            <td>@item.Description</td>
+        </tr>
+    }
+</table>

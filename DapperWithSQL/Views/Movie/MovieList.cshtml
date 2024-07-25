@@ -1,0 +1,31 @@
+﻿@model IEnumerable<DapperWithSQL.Models.Movies>
+@{
+    ViewData["Title"] = "Move List";
+    var i = 1;
+}
+
+<h2>
+    This is movie list
+</h2>
+
+<table class="table">
+    <tr>
+        <th>S.N</th>
+        <th class="col-sm-6">Movie Name</th>
+        <th class="col-sm-6">Movie Price</th>
+    </tr>
+    @foreach(var item in Model){
+        <tr>
+            <td>
+                @(i++)
+            </td>
+            <td class="col-sm-6">
+                @Html.DisplayFor(modelItem => item.Movie_Name)
+            </td class="col-sm-6">
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie_Price)
+            </td>
+        </tr>
+    }
+
+</table>

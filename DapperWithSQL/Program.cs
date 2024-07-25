@@ -7,6 +7,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddOpenApiDocument();
 
+//builder.Services.AddControllersWithViews();
+
 builder.Services.AddSingleton<DapperContext>();
 
 var app = builder.Build();

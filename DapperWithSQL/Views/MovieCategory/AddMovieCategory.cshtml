@@ -1,0 +1,22 @@
+﻿@model MovieCategory
+@{
+    ViewData["Title"] = "Add Movie Category";
+}
+<h2>This ia add movie category</h2>
+
+
+<form method="post" class="form" asp-controller="MovieCategory">
+    <div class="mb-2 form-group">
+        <label asp-for="Genre">Genre:</label><br/>
+        <input class="form-control"  type="text" asp-for="Genre" placeholder="Genre" />
+        <span asp-validation-for="Genre" class="text-danger"></span>
+    </div>
+    <div class="mb-2 form-group">
+        <label asp-for="Description">Description:</label><br />
+        <textarea class="form-control" type="text" asp-for="Description" placeholder="Description" ></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">Add Category</button>
+    </div>
+</form>
