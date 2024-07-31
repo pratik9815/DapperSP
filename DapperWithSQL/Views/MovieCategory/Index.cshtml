@@ -13,8 +13,9 @@
 <table class="table">
     <tr>
         <td>S.N</td>
-        <td class="col-sm-6">Genre</td>
-        <td class="col-sm-6">Description</td>
+        <td class="col-sm-5">Genre</td>
+        <td class="col-sm-5">Description</td>
+        <td class="colsm-2">Action</td>
     </tr>
     @foreach (var item in Model)
     {
@@ -22,6 +23,10 @@
             <td>@(i++)</td>
             <td>@item.Genre</td>
             <td>@item.Description</td>
+            <td>
+                <button class="btn btn-secondary">Edit</button> &nbsp;
+                <button class="btn btn-danger">Delete</button>
+            </td>
         </tr>
     }
 </table>

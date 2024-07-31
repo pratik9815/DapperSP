@@ -1,7 +1,8 @@
 ﻿@model Movies
 @{
-    ViewData["Title"] = "Add Movie";
+    ViewData["Title"] = "Update Movie";
 }
+
 <h2>Add Movie</h2>
 <form method="post" asp-asp-controller="Movie">
     <div class="border p-3 mt-4">
@@ -18,9 +19,8 @@
         <div class="mt-2">
             <label asp-for="@Model.MovieCategory_Id">Movie Category:</label><br />
             <select class="form-control" asp-items="Model.Categories" asp-for="@Model.MovieCategory_Id">
-                <option>-- Select --</option>
+                
             </select>
-            @* <span asp-validation-for="@Model.MovieCategory_Id" class="text-danger"></span> *@
         </div>
         <div class="mt-2">
             <label asp-for="@Model.Movie_Price" name="Movie_Price">Movie Price:</label><br />

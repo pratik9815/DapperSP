@@ -1,8 +1,19 @@
-﻿@model IEnumerable<DapperWithSQL.Models.Movies>
+﻿@using DapperWithSQL.ViewModel
+@model IEnumerable<MovieViewModel>
 @{
     ViewData["Title"] = "Movie";
     var i = 1;
 }
+
+<style>
+    a {
+        text-decoration:none;
+        color:white;
+    }
+    a:hover{
+        color:white;
+    }
+</style>
 
 <div class="row">
 
@@ -18,8 +29,10 @@
 <table class="table">
     <tr>
         <th>S.N</th>
-        <th class="col-sm-6">Movie Name</th>
-        <th class="col-sm-6">Movie Price</th>
+        <th class="col-sm-3">Movie Name</th>
+        <th class="col-sm-3">Movie Price</th>
+        <th class="col-sm-3">Movie Category</th>
+        <th class="col-sm-2">Action</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -32,6 +45,17 @@
             </td>
             <td>
                 @item.Movie_Price
+            </td>
+            <td>
+                @item.CategoryName
+            </td>
+            <td>
+                <button class="btn btn-secondary" >
+                    <a  asp-action="UpdateMovie" asp-controller="Movie" asp-route-id="@item.Id">Edit</a>
+                </button> &nbsp;
+                <button class="btn btn-danger">
+                    <a asp-action="DeleteMovie" asp-controller="Movie" asp-route-id="@item.Id">Delete</a>
+                </button>
             </td>
         </tr>
     }

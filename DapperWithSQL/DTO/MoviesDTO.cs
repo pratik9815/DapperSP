@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace DapperWithSQL.Models
+namespace DapperWithSQL.DTO
 {
-    public class Movies
+    public class MoviesDTO
     {
-        public int Id { get; set; }
         [StringLength(60, MinimumLength = 3, ErrorMessage = "Movie name must be atleast 3 characters long")]
         [Required(ErrorMessage = "Movie name is required")]
         public string Movie_Name { get; set; }
@@ -21,7 +19,5 @@ namespace DapperWithSQL.Models
         public decimal Movie_Price { get; set; }
 
         public string MovieCategory_Id { get; set; }
-
-        public IEnumerable<SelectListItem>? Categories { get; set; }
     }
 }
