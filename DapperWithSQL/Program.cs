@@ -1,3 +1,4 @@
+using DapperWithSQL;
 using DapperWithSQL.DataContext;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Services.AddOpenApiDocument();
 //builder.Services.AddControllersWithViews();
 
 builder.Services.AddSingleton<DapperContext>();
+builder.Services.AddSingleton<MovieStateService>();
 
 var app = builder.Build();
 

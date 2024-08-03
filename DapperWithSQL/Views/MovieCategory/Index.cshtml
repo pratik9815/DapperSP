@@ -3,6 +3,10 @@
     ViewData["Title"] = "Category";
     int i = 1;
 }
+<style>
+
+
+</style>
 <div class="row">
     <h3 class="col-sm-8">Movie Category</h3>
     <button class="col-sm-2 btn btn-primary m-0 p-0" style="font-weight:bold">
@@ -24,7 +28,9 @@
             <td>@item.Genre</td>
             <td>@item.Description</td>
             <td>
-                <button class="btn btn-secondary">Edit</button> &nbsp;
+                <button class="btn btn-secondary">
+                    <a class="text-decoration-none text-white" asp-action="AddMovieCategory" asp-controller="MovieCategory" asp-route-id="@item.Id">Edit</a>  
+                </button> &nbsp;
                 <button class="btn btn-danger">Delete</button>
             </td>
         </tr>
