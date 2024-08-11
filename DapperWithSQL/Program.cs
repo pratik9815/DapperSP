@@ -1,5 +1,9 @@
 using DapperWithSQL;
 using DapperWithSQL.DataContext;
+using DapperWithSQL.IRepository;
+using DapperWithSQL.Repository;
+using DapperWithSQL.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +14,13 @@ builder.Services.AddOpenApiDocument();
 
 //builder.Services.AddControllersWithViews();
 
-builder.Services.AddSingleton<DapperContext>();
-builder.Services.AddSingleton<MovieStateService>();
+builder.Services.AddScoped<DapperContext>();
+builder.Services.AddScoped<IOTPService,OTPService>();
+builder.Services.AddScoped<IRegistrationRepository,RegistrationRepository>();
+
+//default scheme is cookies
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+       .AddCookie();
 
 var app = builder.Build();
 
@@ -27,12 +36,15 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseOpenApi();
 app.UseSwaggerUi(options =>
 {
     options.Path = "/api";
 });
-app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\ASP.NET CORE Project\DapperPublish</_PublishTargetUrl>
+    <History>True|2024-08-03T10:31:18.1941792Z||;False|2024-08-03T16:15:53.7066190+05:45||;True|2024-08-03T16:14:01.5701780+05:45||;True|2024-08-03T16:08:13.2651384+05:45||;True|2024-08-03T15:32:44.0508383+05:45||;</History>
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=PRATEEKPC\SQLEXPRESS%3bDatabase=Example_db%3bEncrypt=false%3b Trusted_Connection = True</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

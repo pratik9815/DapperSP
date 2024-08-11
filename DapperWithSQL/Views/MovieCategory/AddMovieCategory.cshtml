@@ -1,8 +1,9 @@
-﻿@model MovieCategory
+﻿@using DapperWithSQL.ViewModel
+@model MovieCategoryViewModel
 @{
-    ViewData["Title"] = "Add Movie Category";
+    ViewData["Title"] = Model.Id.HasValue ? "Update Movie Category" : "Add Movie Category";
 }
-<h2>This ia add movie category</h2>
+<h2>@ViewData["Title"]</h2>
 
 
 <form method="post" class="form" asp-controller="MovieCategory">

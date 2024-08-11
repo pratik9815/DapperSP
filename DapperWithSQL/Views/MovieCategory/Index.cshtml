@@ -1,4 +1,5 @@
-﻿@model IEnumerable<MovieCategory>;
+﻿@using DapperWithSQL.ViewModel
+@model IEnumerable<MovieCategoryViewModel>;
 @{
     ViewData["Title"] = "Category";
     int i = 1;
@@ -8,7 +9,7 @@
 
 </style>
 <div class="row">
-    <h3 class="col-sm-8">Movie Category</h3>
+    <h3 class="col-sm-10">Movie Category</h3>
     <button class="col-sm-2 btn btn-primary m-0 p-0" style="font-weight:bold">
         <a class="nav-link text-white" asp-controller="MovieCategory" asp-action="AddMovieCategory">Add Category</a>
     </button>
@@ -29,10 +30,33 @@
             <td>@item.Description</td>
             <td>
                 <button class="btn btn-secondary">
-                    <a class="text-decoration-none text-white" asp-action="AddMovieCategory" asp-controller="MovieCategory" asp-route-id="@item.Id">Edit</a>  
+                    <a class="text-decoration-none text-white" asp-action="AddMovieCategory" asp-controller="MovieCategory" asp-route-id="@item.Id">Edit</a>
                 </button> &nbsp;
-                <button class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.Id"> 
+                    Delete
+                </button>
+                <div class="modal fade" id="deleteModal-@item.Id" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="deleteModalLabel">Delete</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this? 
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                <button type="button" class="btn btn-danger">
+                                    <a class="text-decoration-none text-white" asp-action="RemoveMovieCategory" asp-controller="MovieCategory" asp-route-id="@item.Id">Delete</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </td>
         </tr>
     }
 </table>
+

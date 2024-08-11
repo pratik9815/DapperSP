@@ -1,0 +1,12 @@
+﻿@model UserModel;
+@{
+    ViewData["Title"] = "Register Here";
+}
+
+<h1 class="text-center">Register Here</h1>
+
+<form method="post"  asp-action="Index" asp-controller="Registration">
+    <input class="form-control mb-2" type="text" name="Email" placeholder="Enter your email here."/>
+    <input class="form-control mb-2" type="text" name="UserId" placeholder="UserId" />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

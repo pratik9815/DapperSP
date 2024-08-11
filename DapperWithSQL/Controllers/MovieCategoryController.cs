@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using DapperWithSQL.DataContext;
 using DapperWithSQL.Models;
+using DapperWithSQL.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 
@@ -9,22 +10,20 @@ namespace DapperWithSQL.Controllers
     public class MovieCategoryController : Controller
     {
         private readonly DapperContext _context;
-        private readonly MovieStateService _stateService;
 
 
-        public MovieCategoryController(DapperContext context, MovieStateService stateService)
+        public MovieCategoryController(DapperContext context)
         {
             _context = context;
-            _stateService = stateService;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<MovieCategory> categories;
+            IEnumerable<MovieCategoryViewModel> categories = new List<MovieCategoryViewModel>();
             using (var conn = _context.DbConnection())
             {
                 string sql = "SELECT *FROM MovieCategories WITH(NOLOCK)";
-                categories = conn.Query<MovieCategory>(sql);
+                categories = conn.Query<MovieCategoryViewModel>(sql);
             }
             return View(categories);
         }
@@ -33,50 +32,64 @@ namespace DapperWithSQL.Controllers
         {
             if (id == null)
             {
-                return View();
+                return View(new MovieCategoryViewModel());
             }
             string sql = $"SELECT *FROM MOVIECATEGORIES WITH(NOLOCK) WHERE ID = {id}";
-            MovieCategory category = new MovieCategory(); 
+            MovieCategoryViewModel category = new MovieCategoryViewModel();
             using (var conn = _context.DbConnection())
             {
-                category = conn.QueryFirstOrDefault<MovieCategory>(sql);
+                category = conn.QueryFirstOrDefault<MovieCategoryViewModel>(sql);
             }
-            _stateService.IsMovieUpdated = true;
             return View(category);
         }
         [HttpPost]
-        public IActionResult AddMovieCategory(MovieCategory category)
+        public IActionResult AddMovieCategory(MovieCategoryViewModel category)
         {
             if (ModelState.IsValid)
             {
-                if (_stateService.IsMovieUpdated) 
+                if (category.Id == null)
                 {
-                    using (IDbConnection conn = _context.DbConnection())
+                    using (var conn = _context.DbConnection())
                     {
+                        string sql = "INSERT INTO MovieCategories(Genre,[Description]) values('" + category.Genre + "','" + category.Description + "')";
+                        conn.Execute(sql);
 
-                        string sql = "UPDATE MOVIECATEGORIES SET GENRE =  @Genre, DESCRIPTION = @Description WHERE ID = @Id";
-                        DynamicParameters parameters = new DynamicParameters();
-                        parameters.Add("@GENRE", category.Genre);
-                        parameters.Add("@Description", category.Description);
-                        parameters.Add("@Id", category.Id);
-                        conn.Execute(sql,parameters);
                     }
-                    _stateService.IsMovieUpdated = false;
                     return RedirectToAction("Index");
                 }
-                using (var conn = _context.DbConnection())
+
+                using (IDbConnection conn = _context.DbConnection())
                 {
-                    string sql = "INSERT INTO MovieCategories(Genre,[Description]) values('" + category.Genre + "','" + category.Description + "')";
-                    conn.Execute(sql);
-                    return RedirectToAction("Index");
+
+                    string sql = "UPDATE MOVIECATEGORIES SET GENRE =  @Genre, DESCRIPTION = @Description WHERE ID = @Id";
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("@GENRE", category.Genre);
+                    parameters.Add("@Description", category.Description);
+                    parameters.Add("@Id", category.Id);
+                    conn.Execute(sql, parameters);
                 }
+                
+                return RedirectToAction("Index");
+
+
             }
             return View();
         }
-            
-        public IActionResult UpdateMovieCategory(int id)
+
+        public IActionResult RemoveMovieCategory(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            string sql = "DELETE FROM MOVIECATEGORIES WHERE ID = @ID";
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@ID", id);
+            using (var conn = _context.DbConnection())
+            {
+                conn.Execute(sql, parameters);
+            }
+            return RedirectToAction("Index");
         }
     }
 }
