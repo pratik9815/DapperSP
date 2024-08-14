@@ -17,6 +17,7 @@ builder.Services.AddOpenApiDocument();
 builder.Services.AddScoped<DapperContext>();
 builder.Services.AddScoped<IOTPService,OTPService>();
 builder.Services.AddScoped<IRegistrationRepository,RegistrationRepository>();
+builder.Services.AddScoped<IImageRepository,ImageRepository>();
 
 //default scheme is cookies
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

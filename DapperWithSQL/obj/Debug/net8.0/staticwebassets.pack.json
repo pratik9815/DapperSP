@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\DapperWithSQL.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\Uploads\\DOC_Uploads_customerSNO314503233187",
+      "PackagePath": "staticwebassets\\Uploads"
+    },
+    {
+      "Id": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\Uploads\\DOC_Uploads_customerSNO_901846286612",
+      "PackagePath": "staticwebassets\\Uploads"
+    },
+    {
       "Id": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

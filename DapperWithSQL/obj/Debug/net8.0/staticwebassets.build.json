@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OWMYeY1Wcv2VGNwxKJC5EVZ/cgQfoa+yvCiiBXHFeyc=",
+  "Hash": "momTL6JB05n2IlRU6HOKoWK8rdAiAJp7Ce31xrMzwec=",
   "Source": "DapperWithSQL",
   "BasePath": "_content/DapperWithSQL",
   "Mode": "Default",
@@ -1193,6 +1193,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\Uploads\\DOC_Uploads_customerSNO_901846286612",
+      "SourceId": "DapperWithSQL",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\",
+      "BasePath": "_content/DapperWithSQL",
+      "RelativePath": "Uploads/DOC_Uploads_customerSNO_901846286612",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\DOC_Uploads_customerSNO_901846286612"
+    },
+    {
+      "Identity": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\Uploads\\DOC_Uploads_customerSNO314503233187",
+      "SourceId": "DapperWithSQL",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\",
+      "BasePath": "_content/DapperWithSQL",
+      "RelativePath": "Uploads/DOC_Uploads_customerSNO314503233187",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\DOC_Uploads_customerSNO314503233187"
     }
   ]
 }

@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Upload Image";
+}
+<style>
+    #imagePreview{
+        height:300px;
+        width: 400px;
+    }
+</style>
+
+<h1 class="text-center">Image Upload</h1>
+
+<div class="text-center">
+
+    @using (Html.BeginForm("Index", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="mb-3">
+            <input type="file" name="ImageData" id="ImageData" class="form-control" onchange="previewImage(event)" />
+        </div>
+        <div class="mb-3">
+            <button type="submit" value="Upload File" class="btn btn-primary">Submit</button>
+        </div>
+    }
+    <div class="mb-3">
+        <img id="imagePreview" alt="Image Preview" style="display:none;" />
+    </div>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info">
+        @ViewBag.Message
+    </div>
+}
+<script>
+    function previewImage(event) {
+        var input = event.target;
+        var reader = new FileReader();
+
+        reader.onload = function(){
+            var imgElement = document.getElementById('imagePreview');
+            imgElement.src = reader.result;
+            imgElement.style.display = 'block';
+        };
+
+        if (input.files && input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
