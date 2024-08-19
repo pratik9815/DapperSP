@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "momTL6JB05n2IlRU6HOKoWK8rdAiAJp7Ce31xrMzwec=",
+  "Hash": "ZVwfI92PbtMyXLaYIOQGGapZYay7qWhxJYWmAq+bHyU=",
   "Source": "DapperWithSQL",
   "BasePath": "_content/DapperWithSQL",
   "Mode": "Default",
@@ -1195,12 +1195,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\Uploads\\DOC_Uploads_customerSNO_901846286612",
+      "Identity": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\Uploads\\DOC_Uploads_customerSNO_274385095233.jpg",
       "SourceId": "DapperWithSQL",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\",
       "BasePath": "_content/DapperWithSQL",
-      "RelativePath": "Uploads/DOC_Uploads_customerSNO_901846286612",
+      "RelativePath": "Uploads/DOC_Uploads_customerSNO_274385095233.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1211,15 +1211,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\DOC_Uploads_customerSNO_901846286612"
+      "OriginalItemSpec": "wwwroot\\Uploads\\DOC_Uploads_customerSNO_274385095233.jpg"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\Uploads\\DOC_Uploads_customerSNO314503233187",
+      "Identity": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\Uploads\\DOC_Uploads_customerSNO_523157478030.jpg",
       "SourceId": "DapperWithSQL",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\",
       "BasePath": "_content/DapperWithSQL",
-      "RelativePath": "Uploads/DOC_Uploads_customerSNO314503233187",
+      "RelativePath": "Uploads/DOC_Uploads_customerSNO_523157478030.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1230,7 +1230,64 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\DOC_Uploads_customerSNO314503233187"
+      "OriginalItemSpec": "wwwroot\\Uploads\\DOC_Uploads_customerSNO_523157478030.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\Uploads\\DOC_Uploads_customerSNO_583551954187.jpg",
+      "SourceId": "DapperWithSQL",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\",
+      "BasePath": "_content/DapperWithSQL",
+      "RelativePath": "Uploads/DOC_Uploads_customerSNO_583551954187.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\DOC_Uploads_customerSNO_583551954187.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\Uploads\\DOC_Uploads_customerSNO_813516703252.jpg",
+      "SourceId": "DapperWithSQL",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\",
+      "BasePath": "_content/DapperWithSQL",
+      "RelativePath": "Uploads/DOC_Uploads_customerSNO_813516703252.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\DOC_Uploads_customerSNO_813516703252.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\Uploads\\DOC_Uploads_customerSNO_816826413465.jpg",
+      "SourceId": "DapperWithSQL",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hp\\source\\repos\\DapperWithSQL\\DapperWithSQL\\wwwroot\\",
+      "BasePath": "_content/DapperWithSQL",
+      "RelativePath": "Uploads/DOC_Uploads_customerSNO_816826413465.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\DOC_Uploads_customerSNO_816826413465.jpg"
     }
   ]
 }

@@ -1,21 +1,47 @@
-﻿@{
+﻿@model ImageUploadAndListVM;
+@{
     ViewData["Title"] = "Upload Image";
+    int i = 1;
 }
 <style>
-    #imagePreview{
-        height:300px;
+    #imagePreview {
+        height: 300px;
         width: 400px;
+        display: none;
+    }
+
+    #staticValuesField {
+        display: none;
     }
 </style>
 
 <h1 class="text-center">Image Upload</h1>
 
-<div class="text-center">
+<div class="container">
 
     @using (Html.BeginForm("Index", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        <div class="mb-3">
-            <input type="file" name="ImageData" id="ImageData" class="form-control" onchange="previewImage(event)" />
+
+        <div class="mb-3 row">
+            <div class="col-sm-6">
+                <label for="imageName" class="">Image Name</label>
+                <input type="text" id="imageName" name="imageVM.imageName" class="form-control" placeholder="Image Name" />
+            </div>
+            <div class="col-sm-6">
+                <label for="staticValueType" class="">Id Type</label>
+                <select id="staticValueType" name="imageVM.idType" class="form-select mb-3" aria-label="Select" asp-items="Model.imageVM.SelectStaticValueType">
+                    <option disabled selected>--Select ID Type--</option>
+                </select>
+            </div>
+            <div class="col-sm-6" id="staticValuesField">
+                <label for="staticValues">Image Type</label>
+                <select asp-for="imageVM.ImageType" id="staticValues" class="form-select mb-3" aria-label="Select">
+                </select>
+            </div>
+            <div class="col-sm-6">
+                <label for="ImageData">File</label>
+                <input type="file" name="imageVM.ImageData" id="ImageData" class="form-control" onchange="previewImage(event)" />
+            </div>
         </div>
         <div class="mb-3">
             <button type="submit" value="Upload File" class="btn btn-primary">Submit</button>
@@ -26,18 +52,76 @@
     </div>
 </div>
 
+<div class="container myDocuments">
+    <h3 class="text-center">My documents</h3>
+    <table class="table">
+        <tr>
+            <th class="col-sm-1">S.NO.</th>
+            <th class="col-sm-3">Image Name</th>
+            <th class="col-sm-3">Image Type</th>
+            <th class="col-sm-3">Image Form</th>
+            <th class="col-sm-3">Action</th>
+        </tr>
+        @foreach(var image in Model.Images) 
+        {
+            <tr>
+                <td class="col-sm-1">@(i++)</td>
+                <td class="col-sm-3">@image.fileName</td>
+                <td class="col-sm-3">@image.ImageType</td>
+                <td class="col-sm-3">@image.IdType</td>
+                <td class="col-sm-3">
+                    <button class="btn btn-secondary">View</button>
+                    <button class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        }
+        
+    </table>
+</div>
+
 @if (ViewBag.Message != null)
 {
     <div class="alert alert-info">
         @ViewBag.Message
     </div>
 }
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
 <script>
+
+
+    $(document).ready(function () {
+        $('#staticValueType').change(function () {
+            var id = $(this).val();
+            var text = $(this).find('option:selected').text();
+            $('#staticValuesField').show();
+            $('#staticValues').empty();
+            $('#staticValues').append('<option disabled selected>--Select ID Type--</option>');
+            debugger;
+            $.ajax({
+                //for single data the url is going to be
+                // url: '@Url.Action("AjaxMethod", "Image")' + '?id = ' + id
+                url: '@Url.Action("AjaxMethod", "Image")',
+                data: { id: id, value: text },
+                success: function (result) {
+                    $.each(result, function (i, res) {
+                        $('#staticValues').append('<option  value ="' + res.static_value + '">' + res.static_data + '</option>')
+                    })
+                }
+            })
+        })
+    })
+
+    function GetStaticValue() {
+
+    }
+
+
     function previewImage(event) {
         var input = event.target;
         var reader = new FileReader();
 
-        reader.onload = function(){
+        reader.onload = function () {
             var imgElement = document.getElementById('imagePreview');
             imgElement.src = reader.result;
             imgElement.style.display = 'block';

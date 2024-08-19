@@ -1,11 +1,11 @@
 ﻿namespace DapperWithSQL.Models
 {
-    public class Image
+    public class ImageResponse
     {
-        public string Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string Path { get; set; }
-        public IFormFile ImageData { get; set; } 
+        public string fileName { get; set; }
+        public string filePath { get; set; }
+        public string IdType { get; set; }
+        public string ImageType { get; set; }
     }
 }

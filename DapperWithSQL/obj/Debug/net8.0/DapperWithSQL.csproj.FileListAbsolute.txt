@@ -82,3 +82,4 @@ C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\obj\Debug\net8.0\refint\Dap
 C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\obj\Debug\net8.0\DapperWithSQL.pdb
 C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\obj\Debug\net8.0\DapperWithSQL.genruntimeconfig.cache
 C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\obj\Debug\net8.0\ref\DapperWithSQL.dll
+C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

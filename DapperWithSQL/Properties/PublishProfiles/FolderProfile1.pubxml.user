@@ -14,4 +14,51 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <Value>Server=PRATEEKPC\SQLEXPRESS%3bDatabase=Example_db%3bEncrypt=false%3b Trusted_Connection = True</Value>
     </DestinationConnectionStrings>
   </ItemGroup>
+  <ItemGroup>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_173380143023.jpg">
+      <publishTime>08/18/2024 15:29:48</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_190832335844.jpg">
+      <publishTime>08/17/2024 12:32:52</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_191323338776.jpg">
+      <publishTime>08/19/2024 21:17:49</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_204135975430.jpg">
+      <publishTime>08/17/2024 12:37:46</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_267497262047.jpg">
+      <publishTime>08/18/2024 15:28:22</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_287037936840.jpg">
+      <publishTime>08/19/2024 21:18:43</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_389627417166.jpg">
+      <publishTime>08/18/2024 15:31:57</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_525380414093.jpg">
+      <publishTime>08/18/2024 15:31:00</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_538857790124.jpg">
+      <publishTime>08/17/2024 12:34:59</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_568981035215.jpg">
+      <publishTime>08/17/2024 12:35:33</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_596484295079.jpg">
+      <publishTime>08/19/2024 21:18:06</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_637008911358.jpg">
+      <publishTime>08/19/2024 21:13:06</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_719923521642.jpg">
+      <publishTime>08/18/2024 15:25:38</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_801894414745.jpg">
+      <publishTime>08/18/2024 16:11:15</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/DOC_Uploads_customerSNO_858659857573.jpg">
+      <publishTime>08/18/2024 16:10:50</publishTime>
+    </File>
+  </ItemGroup>
 </Project>

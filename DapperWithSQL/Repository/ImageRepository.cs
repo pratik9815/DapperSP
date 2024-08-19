@@ -2,6 +2,8 @@
 using DapperWithSQL.DataContext;
 using DapperWithSQL.IRepository;
 using DapperWithSQL.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace DapperWithSQL.Repository
 {
@@ -16,7 +18,22 @@ namespace DapperWithSQL.Repository
             _environment = environment;
         }
 
-        public async Task<Api_Response> AddImage(Image image)
+        public  IEnumerable<StaticValue> GetStaticValue() 
+        {
+            IEnumerable<StaticValue> staticValue = new List<StaticValue>();
+
+            using(IDbConnection conn = _dapperContext.DbConnection())
+            {
+                string sql = "Select *from static_values_type where description = @description";
+                DynamicParameters dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add("@description", "file");
+                staticValue = conn.Query<StaticValue>(sql,dynamicParameters);
+            }
+
+            return staticValue;
+        }
+
+        public async Task<Api_Response> AddImage(ImageVM image)
         {
             Api_Response response = new Api_Response();
             string extension = Path.GetExtension(image.ImageData.FileName)?.ToLowerInvariant();
@@ -41,14 +58,42 @@ namespace DapperWithSQL.Repository
             }
             using(var conn =  _dapperContext.DbConnection())
             {
-                string sql = "Insert into CustomerImages(Name, FilePath)";
+                string sql = "Insert into customerImage(Name, fileName, filePath,idType,imageType) values (@Name, @fileName, @path, @idType, @imageType)";
                 DynamicParameters dynamicParameters = new DynamicParameters();
-                dynamicParameters.Add("@Name", image.Name);
+                dynamicParameters.Add("@Name", image.ImageName);
                 dynamicParameters.Add("@fileName", fileName);
-
-                response = await conn.QuerySingleAsync<Api_Response>(sql, dynamicParameters);
+                dynamicParameters.Add("@path", fileSavePath);
+                dynamicParameters.Add("@idType", image.IdType);
+                dynamicParameters.Add("@imageType", image.ImageType);
+                await conn.ExecuteAsync(sql, dynamicParameters);
+                response.Msg = "Image";
             }
+
             return response;
+        }
+
+        public JsonResult AjaxMethod(string sno, string value)
+        {
+            IEnumerable<StaticValue> staticValue = new List<StaticValue>();
+            using (var conn = _dapperContext.DbConnection())
+            {
+                string sql = "Select *from static_values where sno = @sno and description = @description";
+                DynamicParameters dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add("@sno", sno);
+                dynamicParameters.Add("@description",value);
+                staticValue = conn.Query<StaticValue>(sql, dynamicParameters);
+            }
+            return new JsonResult(staticValue);
+        }
+        public IEnumerable<ImageResponse> GetImage()
+        {
+            IEnumerable<ImageResponse> image = new List<ImageResponse>();
+            using(var conn = _dapperContext.DbConnection())
+            {
+                string sql = "Select *from customerimage";
+                image = conn.Query<ImageResponse>(sql);
+            }
+            return image;
         }
     }
 }

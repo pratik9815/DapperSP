@@ -2,6 +2,16 @@
 @{
     ViewData["Title"] = "Register Here";
 }
+<style>
+    .link{
+        text-decoration: none;
+        color: white;
+    }
+    .link:hover{
+        color:white;
+    }
+</style>
+
 
 <h1 class="text-center">Register Here</h1>
 
@@ -9,4 +19,5 @@
     <input class="form-control mb-2" type="text" name="Email" placeholder="Enter your email here."/>
     <input class="form-control mb-2" type="text" name="UserId" placeholder="UserId" />
     <button type="submit" class="btn btn-primary">Submit</button>
+    <button class="ms-2 btn btn-secondary"><a class="link" asp-action="Login" asp-controller="Registration">Login</a></button>
 </form>

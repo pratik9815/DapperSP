@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Login Model";
+}
+<style>
+    label{
+        font-size:16px;
+    }
+</style>
+
+
+<form method="post">
+    <div class="col-sm-3">
+        <label name="username">Username:</label>
+        <input type="text" id="username" placeholder="Username" class="form-control" />
+    </div>
+    <div class="col-sm-3 mt-2">
+        <label name="password">Password:</label>
+        <input type="password" id="password" placeholder="Password" class="form-control" />
+    </div>
+    <div class="col-sm-3 mt-2">
+        <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+</form>
