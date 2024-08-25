@@ -1,0 +1,166 @@
+﻿@model MultipleImageModel;
+@{
+    ViewData["Title"] = "Image Upload with Dropdown";
+}
+<style>
+    .formContainer{
+        /* display:flex; */
+        gap:50px;
+        /* display:none; */
+    }
+
+    .display_none{
+        display:none;
+    }
+    .display_flex{
+        display:flex;
+    }
+
+    .imageContainer{
+        height: 410px;
+        width: 350px;
+        border: 1px solid;
+    }
+
+    .imagePreview{
+        height:350px;
+        width:350px;
+        object-fit:cover;
+        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    }
+
+    .commonLabel {
+        margin-top: 0px;
+        display: inline-block;
+        cursor: pointer;
+        padding: 11px 0px;
+        background-color: aquamarine;
+        width: 350px;
+        border-radius: 5px;
+        text-align: center;
+        border: 2px solid transparent;
+        color: white;
+        user-select: none;
+        text-transform: uppercase;
+        background-color: #007bff;
+        transition: background-color 0.3s;
+    }
+
+    input[type="file"]{
+        display:none;
+    }
+
+
+    .commonLabel:hover{
+            background-color: #0056b3;
+    }
+</style>
+<h1 class="text-center">This is multiple image controller</h1>
+
+
+<div class="container">
+    @using (Html.BeginForm("Index", "MultipleImage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="mb-2 col-sm-6">
+            <label for="imageType" class="">Image Type</label>
+            <select class="dropdownf form-select" aria-label="Select" id="imageType" name="Value">
+                <option disabled selected>--Select--</option>
+                <option value="1">Citizenship</option>
+                <option value="2">NationalId</option>
+            </select>
+        </div>
+
+        <div class="formContainer display_none" id="citizenship">
+            <div class="imageContainer">
+                <img id="imagePreviewCustomer" class="imagePreview" />
+                <input class="commonFile" type="file" id="customerImageCitizenship" data-target="imagePreviewCustomer" name="CustomerImage" />
+                <label for="customerImageCitizenship" class="commonLabel">Customer Image</label>
+            </div>
+            <div class="imageContainer">
+                <img id="imagePreviewCitizenshipFront" class="imagePreview" />
+                <input class="commonFile" type="file" id="citizenshipFront" data-target="imagePreviewCitizenshipFront" name="CitizenshipFront" />
+                <label for="citizenshipFront" class="commonLabel">Citizenship Front</label>
+            </div>
+            <div class="imageContainer">
+                <img id="imagePreviewCitizenshipBack" class="imagePreview" />
+                <input class="commonFile" type="file" id="citizenshipBack" data-target="imagePreviewCitizenshipBack" name="CitizenshipBack" />
+                <label for="citizenshipBack" class="commonLabel">Citizenship Back</label>
+            </div>
+        </div>
+
+        <div class="formContainer display_none" id="nationalId">
+            <div class="imageContainer">
+                <img id="previewCustomerImage" class="imagePreview" />
+                <input class="commonFile" type="file" id="customerImage" data-target="previewCustomerImage" name="CustomerImage"/>
+                <label for="customerImage" class="commonLabel">Customer Image</label>
+            </div>
+            <div class="imageContainer">
+                <img id="nationalIdImage" class="imagePreview" />
+                <input class="commonFile" type="file" id="nationalIdFront" data-target="nationalIdImage" name="NationalId" />
+                <label for="nationalIdFront" class="commonLabel">NationalId Image</label>
+            </div>
+        </div>
+        <div class="col-sm-6 mt-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    }
+
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.body.addEventListener('change', (event) => {
+            if (event.target.classList.contains('commonFile')) {
+                previewImage(event)
+            }
+        })
+    })
+
+    const imageType = document.getElementById('imageType');
+    imageType.addEventListener("change", imageSelect);
+
+    function setDisplayClass(showId, hideId) {
+        hideId.classList.add('display_none');
+        hideId.classList.remove('display_flex');
+        showId.classList.remove('display_none');
+        showId.classList.add('display_flex');
+    }
+
+    function imageSelect(event) {
+        const selectedValue = event.target.value;
+        const nationalId = document.getElementById('nationalId');
+        const citizenship = document.getElementById('citizenship');
+        if (selectedValue == 1) {
+            clearAllImagePreview();
+            setDisplayClass(citizenship, nationalId);
+        } else if (selectedValue == 2) {
+            clearAllImagePreview();
+            setDisplayClass(nationalId, citizenship);
+        } else {
+            clearAllImagePreview();
+            nationalId.classList.add('display_none');
+            citizenship.classList.add('display_none');
+        }
+    }
+
+
+    function previewImage(event)
+    {
+        var input = event.target;
+        var idName = input.getAttribute('data-target');
+        var filereader = new FileReader();
+        filereader.onload = function () {       
+            var imageDisplay = document.getElementById(idName);
+            imageDisplay.src = filereader.result;
+        }
+        filereader.readAsDataURL(input.files[0]);
+    }
+
+    function clearAllImagePreview(){
+        const images = document.querySelectorAll('img');
+        images.forEach(image => {
+            image.src = '';
+        })
+    }
+</script>

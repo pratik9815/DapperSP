@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DapperWithSQL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8cc8274438bda52e0ff7da091904e59ba91f65dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a285b216cfd7966c68384d2eba1d963f65248ad6")]
 [assembly: System.Reflection.AssemblyProductAttribute("DapperWithSQL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DapperWithSQL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

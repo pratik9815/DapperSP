@@ -83,3 +83,8 @@ C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\obj\Debug\net8.0\DapperWith
 C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\obj\Debug\net8.0\DapperWithSQL.genruntimeconfig.cache
 C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\obj\Debug\net8.0\ref\DapperWithSQL.dll
 C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\bin\Debug\net8.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\Users\hp\source\repos\DapperWithSQL\DapperWithSQL\bin\Debug\net8.0\System.Security.Permissions.dll
