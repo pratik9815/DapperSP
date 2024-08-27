@@ -1,0 +1,41 @@
+﻿@model UniversityInformation;
+@{
+    ViewData["Title"] = "XML Operation";
+}
+
+<div class="container">
+    @using (Html.BeginForm("Index", "XMLHandler", FormMethod.Post, new { @class = "form" }))
+    {
+        <div class="form-group col-sm-6">
+            <label for="collegeId">College Id<span class="text-danger">*</span></label>
+            @Html.TextBoxFor(m => m.CollegeId, new { @class = "form-control", @id = "collegeId" })
+            <span asp-validation-for="CollegeId" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="collegeName">College Name<span class="text-danger">*</span></label>
+            @Html.TextBoxFor(m => m.CollegeName, new { @class = "form-control", @id = "collegeName" })
+            <span asp-validation-for="CollegeName" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="collegeAddress">College Address<span class="text-danger">*</span></label>
+            @Html.TextBoxFor(m => m.CollegeAddress, new { @class = "form-control", @id = "collegeAddress" })
+            <span asp-validation-for="CollegeAddress" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="collegeContact">College Contact<span class="text-danger">*</span></label>
+            @Html.TextBoxFor(m => m.CollegeContact, new { @class = "form-control", @id = "collegeContact" })
+            <span asp-validation-for="CollegeContact" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-6">
+            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+        </div>
+    }
+
+    @if (ViewBag.Message != null)
+    {
+        <p class="alert alert-info">@ViewBag.Message</p>
+    }
+
+
+</div>
+
