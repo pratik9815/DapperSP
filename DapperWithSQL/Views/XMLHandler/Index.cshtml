@@ -4,7 +4,7 @@
 }
 
 <div class="container">
-    @using (Html.BeginForm("Index", "XMLHandler", FormMethod.Post, new { @class = "form" }))
+    @using (Html.BeginForm("Index", "XMLHandler", FormMethod.Post, new { @class = "form", @id="formElement" }))
     {
         <div class="form-group col-sm-6">
             <label for="collegeId">College Id<span class="text-danger">*</span></label>
@@ -26,10 +26,29 @@
             @Html.TextBoxFor(m => m.CollegeContact, new { @class = "form-control", @id = "collegeContact" })
             <span asp-validation-for="CollegeContact" class="text-danger"></span>
         </div>
+        <div class="form-group col-sm-6 mt-2">
+            <span class="btn btn-success">
+                <a id="add">Add more</a>
+            </span>
+            <span class="btn btn-danger">
+                <a id="remove">Remove last</a>
+            </span>
+        </div>
         <div class="form-group col-sm-6">
             <button type="submit" class="btn btn-primary mt-2">Submit</button>
         </div>
     }
+
+    <div class="form-group form fieldGroupCopy" style="display: none;">
+        <div class="input-group mb-3">
+            <input type="text" name="first_name[]" class="form-control" placeholder="First Name" />
+            <input type="text" name="last_name[]" class="form-control" placeholder="Last Name" />
+            <input type="text" name="email[]" class="form-control" placeholder="Email address" />
+            <span class="input-group-text">
+                <a href="javascript:void(0)" class="btn btn-danger remove"><i class="custicon cross"></i> Remove</a>
+            </span>
+        </div>
+    </div>
 
     @if (ViewBag.Message != null)
     {
@@ -38,4 +57,29 @@
 
 
 </div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+
+
+    $(document).ready(() => {
+        // console.log("The page is called");
+        var maxGroup = 10;
+
+        $('#add').click( () => {
+            console.log("Add button is clicked");
+
+            // if ($('body').find('.form').length < maxGroup) {
+                var fieldHtml = '<div class = "form">' + $(".fieldGroupCopy").html() + '</div>';
+            // } else {
+            //     alert('Maximum ' + maxGroup + ' groups are allowed.');
+            // }
+        });
+
+        $('#remove').click(() => {
+            console.log("remove button is clicked");
+        });
+    });
+
+</script>
 

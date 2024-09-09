@@ -14,7 +14,7 @@ namespace DapperWithSQL.Repository
 
         public ImageRepository(DapperContext dapperContext, IWebHostEnvironment environment)
         {
-            _dapperContext = dapperContext;
+            _dapperContext = dapperContext; 
             _environment = environment;
         }
 

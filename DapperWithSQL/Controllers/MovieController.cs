@@ -122,5 +122,11 @@ namespace DapperWithSQL.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult UploadFiles(IFormFile file)
+        {
+            return Ok();
+        }
     }
 }
